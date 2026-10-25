@@ -7,7 +7,7 @@
 [![n8n](https://img.shields.io/badge/n8n-Automated_ETL_Orchestration-EA4B71?style=for-the-badge&logo=n8n&logoColor=white)](https://n8n.io/)
 [![Python](https://img.shields.io/badge/Python-Data_Validation_&_Telemetry-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Cloud Cost](https://img.shields.io/badge/Cloud_Cost-%E2%82%B90.00_%2F_100%25_Free_Tier-2ea44f?style=for-the-badge)]()
-[![Live Demo](https://img.shields.io/badge/Interactive_Demo-Live_Motion_Dashboard-blue?style=for-the-badge&logo=googlechrome&logoColor=white)](https://ravinder0710.github.io/honda-dashboard.html)
+[![Interactive Walkthrough](https://img.shields.io/badge/Interactive_Walkthrough-Live_Cinema_Player-e40521?style=for-the-badge&logo=googlechrome&logoColor=white)](https://ravinder0710.github.io/honda-walkthrough.html)
 
 ---
 
