@@ -54,6 +54,8 @@ Multidimensional matrix drilldown dissecting unit volumes, model displacements (
 
 ## 🛠️ Data Architecture & Analytical Workflow
 
+![Honda Two-Wheelers Enterprise Data Architecture & Pipeline](data_architecture_pipeline.png)
+
 ```mermaid
 flowchart TD
     A["Multi-Branch Showroom Endpoints (CSV Telemetry)"] --> B["n8n Automated ETL Webhook & Cron Engine"]
