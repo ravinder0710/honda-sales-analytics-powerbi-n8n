@@ -1,0 +1,7 @@
+# Hide large presentation and walkthrough HTML pages from language statistics
+*.html linguist-detectable=false
+*.html linguist-vendored
+
+# Track database queries and Python ETL pipelines as primary languages
+sql/*.sql linguist-detectable=true
+scripts/*.py linguist-detectable=true
