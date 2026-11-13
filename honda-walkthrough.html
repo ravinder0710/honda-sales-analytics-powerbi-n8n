@@ -83,73 +83,283 @@ aside li.act{color:var(--gold);font-weight:600}
 #start span{font-size:26px;font-weight:600}
 #start.off{display:none}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation-duration:.01s!important}}
-@keyframes pulseGlow { 0%, 100% { opacity: 0.4; transform: scale(0.98); } 50% { opacity: 0.9; transform: scale(1.05); } }
-@keyframes rotateRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-@keyframes laserSweep { 0% { transform: translateX(-150%) skewX(-25deg); opacity: 0; } 40% { opacity: 0.85; } 100% { transform: translateX(250%) skewX(-25deg); opacity: 0; } }
-@keyframes floatBadge { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-4px); } }
+/* ==========================================
+   RAVINDER GUPTA — LUXURY BRANDING IDENTITY
+   ========================================== */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.45; transform: scale(0.97); }
+  50% { opacity: 0.95; transform: scale(1.05); }
+}
+@keyframes rotateRing {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes laserSweep {
+  0% { transform: translateX(-150%) skewX(-25deg); opacity: 0; }
+  35% { opacity: 0.9; }
+  100% { transform: translateX(250%) skewX(-25deg); opacity: 0; }
+}
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
 
-#stage{background:radial-gradient(ellipse at 50% 35%,#450a0a,#180303 75%)}
+#stage {
+  background: radial-gradient(ellipse at 50% 35%, #4a0808, #180303 75%);
+}
 
-/* RG Luxury Brand Motion Badge */
-.rg-brand-slot {
+/* 2-Second Brand Splash Overlay */
+.brand-splash {
   position: absolute;
-  right: 50px;
-  bottom: 40px;
+  inset: 0;
+  z-index: 6;
+  background: radial-gradient(circle at 50% 45%, #240505 0%, #0d0202 80%, #050101 100%);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 18px;
+  justify-content: center;
   opacity: 0;
-  transform: translateY(24px) scale(0.94);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 10;
+  pointer-events: none;
+  transition: opacity 0.5s ease-out;
+  overflow: hidden;
 }
-.rg-brand-slot.in {
+.brand-splash.active {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  pointer-events: all;
 }
-.rg-badge-anchor {
+.splash-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.splash-ambient-orb1 {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: rgba(228, 5, 33, 0.18);
+  filter: blur(80px);
+  pointer-events: none;
+}
+.splash-ambient-orb2 {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: rgba(185, 28, 28, 0.22);
+  filter: blur(70px);
+  pointer-events: none;
+}
+.splash-cyber-rings {
+  position: absolute;
+  width: 310px;
+  height: 310px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(248, 113, 113, 0.35);
+  animation: rotateRing 14s linear infinite;
+  pointer-events: none;
+}
+.splash-content {
   position: relative;
-  width: 78px;
-  height: 78px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  padding: 0 20px;
+}
+.splash-badge-container {
+  position: relative;
+  width: 104px;
+  height: 104px;
   display: flex;
   align-items: center;
   justify-content: center;
   animation: floatBadge 4s ease-in-out infinite;
 }
-.rg-badge-glow {
+.splash-badge-border {
+  position: relative;
+  width: 104px;
+  height: 104px;
+  border-radius: 26px;
+  padding: 3px;
+  background: linear-gradient(135deg, #ef4444, #e40521 45%, #7f1d1d 100%);
+  box-shadow: 0 12px 35px -5px rgba(228, 5, 33, 0.65), inset 0 0 15px rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+}
+.splash-laser {
   position: absolute;
-  inset: -12px;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  animation: laserSweep 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+.splash-badge-inner {
+  width: 100%;
+  height: 100%;
+  background: #080c16;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.splash-holo-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  background-image: radial-gradient(#ef4444 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+.splash-rg-text {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 42px;
+  letter-spacing: 3px;
+  background: linear-gradient(180deg, #ffffff 15%, #fca5a5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 10px rgba(239, 68, 68, 0.85));
+}
+.splash-badge-glow {
+  position: absolute;
+  inset: -14px;
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.5) 0%, rgba(228, 5, 33, 0) 70%);
+  border-radius: 50%;
+  animation: pulseGlow 3s ease-in-out infinite;
+  pointer-events: none;
+}
+.splash-text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.splash-tagline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  padding: 4px 14px;
+  border-radius: 20px;
+}
+.splash-name {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 34px;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  margin: 0;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+}
+.splash-subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: #cbd5e1;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+.splash-telemetry-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+.splash-telemetry-row span {
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  background: rgba(15, 23, 42, 0.9);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.splash-timeline-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(15, 23, 42, 0.8);
+}
+.splash-timeline-bar {
+  height: 100%;
+  width: 0%;
+  background: #e40521;
+  box-shadow: 0 0 10px #e40521;
+}
+
+/* Docked Brand Badge (Replaces old Calligraphy Signature in #intro) */
+.rg-brand-dock {
+  position: absolute;
+  right: 64px;
+  bottom: 46px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(22px) scale(0.95);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 3;
+}
+.rg-brand-dock.in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.rg-dock-anchor {
+  position: relative;
+  width: 74px;
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: floatBadge 4s ease-in-out infinite;
+}
+.rg-dock-glow {
+  position: absolute;
+  inset: -10px;
   background: radial-gradient(circle, rgba(239, 68, 68, 0.45) 0%, rgba(228, 5, 33, 0) 70%);
   border-radius: 50%;
   animation: pulseGlow 3s ease-in-out infinite;
   pointer-events: none;
 }
-.rg-badge-ring {
+.rg-dock-ring {
   position: absolute;
-  inset: -10px;
-  border: 1.5px dashed rgba(248, 113, 113, 0.4);
+  inset: -8px;
+  border: 1.5px dashed rgba(248, 113, 113, 0.35);
   border-radius: 50%;
   animation: rotateRing 14s linear infinite;
   pointer-events: none;
 }
-.rg-badge-box {
+.rg-dock-box {
   position: relative;
-  width: 78px;
-  height: 78px;
+  width: 74px;
+  height: 74px;
   border-radius: 20px;
   padding: 2.5px;
-  background: linear-gradient(135deg, #ef4444, #e40521 40%, #7f1d1d 100%);
-  box-shadow: 0 10px 25px -5px rgba(228, 5, 33, 0.6), inset 0 0 12px rgba(255,255,255,0.25);
+  background: linear-gradient(135deg, #ef4444, #e40521 45%, #7f1d1d 100%);
+  box-shadow: 0 8px 24px -4px rgba(228, 5, 33, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.25);
   overflow: hidden;
 }
-.rg-laser {
+.rg-dock-laser {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
-  animation: laserSweep 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+  animation: laserSweep 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   pointer-events: none;
 }
-.rg-badge-inner {
+.rg-dock-inner {
   width: 100%;
   height: 100%;
   background: #080c16;
@@ -159,24 +369,31 @@ aside li.act{color:var(--gold);font-weight:600}
   justify-content: center;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
-.rg-badge-inner span {
+.rg-dock-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  background-image: radial-gradient(#ef4444 1px, transparent 1px);
+  background-size: 6px 6px;
+}
+.rg-dock-inner span {
   font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   font-weight: 900;
-  font-size: 32px;
+  font-size: 30px;
   letter-spacing: 2px;
-  background: linear-gradient(180deg, #ffffff 20%, #fca5a5 100%);
+  background: linear-gradient(180deg, #ffffff 15%, #fca5a5 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 2px 8px rgba(239, 68, 68, 0.8));
 }
-.rg-badge-meta {
+.rg-dock-meta {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
-.rg-meta-tag {
+.rg-dock-tag {
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   font-weight: 800;
@@ -187,7 +404,7 @@ aside li.act{color:var(--gold);font-weight:600}
   align-items: center;
   gap: 6px;
 }
-.rg-meta-tag::before {
+.rg-dock-tag::before {
   content: '';
   width: 6px;
   height: 6px;
@@ -195,22 +412,22 @@ aside li.act{color:var(--gold);font-weight:600}
   background: #ef4444;
   box-shadow: 0 0 8px #ef4444;
 }
-.rg-meta-name {
+.rg-dock-name {
   font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   font-size: 24px;
   font-weight: 900;
   color: #ffffff;
   letter-spacing: 0.5px;
   line-height: 1.1;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 }
-.rg-meta-chips {
+.rg-dock-chips {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   margin-top: 4px;
 }
-.rg-meta-chips span {
+.rg-dock-chips span {
   padding: 2px 8px;
   border-radius: 6px;
   font-size: 10px;
@@ -220,11 +437,44 @@ aside li.act{color:var(--gold);font-weight:600}
   color: #cbd5e1;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
-.range{margin-top:26px;display:inline-block;background:#e40521;color:#fff;font-weight:800;font-size:30px;padding:14px 28px;border-radius:14px}
-</style></head><body>
+.range{margin-top:26px;display:inline-block;background:#e40521;color:#fff;font-weight:800;font-size:18px;padding:6px 16px;border-radius:8px}</style></head><body>
 <div id="player">
 <div id="stage">
 <button id="start" aria-label="Play walkthrough"><b>▶</b><span>Play walkthrough (2:49)</span></button>
+
+<!-- 2-Second Luxury Brand Intro Sequence -->
+<div id="brand-splash" class="brand-splash">
+  <canvas id="splashCanvas" class="splash-canvas"></canvas>
+  <div class="splash-ambient-orb1"></div>
+  <div class="splash-ambient-orb2"></div>
+  <div class="splash-cyber-rings"></div>
+  <div class="splash-content">
+    <div class="splash-badge-container">
+      <div class="splash-badge-border">
+        <div class="splash-laser"></div>
+        <div class="splash-badge-inner">
+          <div class="splash-holo-grid"></div>
+          <span class="splash-rg-text">RG</span>
+        </div>
+      </div>
+      <div class="splash-badge-glow"></div>
+    </div>
+    <div class="splash-text-block">
+      <div class="splash-tagline">EXECUTIVE DATA INTELLIGENCE</div>
+      <h1 class="splash-name">Ravinder Gupta<span style="color:#ef4444">.</span></h1>
+      <p class="splash-subtitle">Star Schema &bull; DirectQuery Cockpits &bull; Serverless Pipelines</p>
+    </div>
+    <div class="splash-telemetry-row">
+      <span>Power BI DAX</span>
+      <span>Relational SQL</span>
+      <span>Python FastMCP</span>
+      <span>n8n Cloud ETL</span>
+    </div>
+  </div>
+  <div class="splash-timeline-container">
+    <div id="splashTimeBar" class="splash-timeline-bar"></div>
+  </div>
+</div>
 
 <section class="sc" id="intro">
  <svg viewBox="0 0 640 220" data-at="0.5"><path d="M0 170 L70 120 L130 150 L200 60 L260 130 L330 90 L400 150 L470 40 L540 110 L640 70"/></svg>
@@ -233,21 +483,22 @@ aside li.act{color:var(--gold);font-weight:600}
   <p data-at="1.5">A zero-cost, automated pipeline that feeds a live four-page Power BI dashboard.</p>
   <div class="chips"><span data-at="3.2">n8n</span><span data-at="3.8">Python</span><span data-at="4.4">PostgreSQL</span><span data-at="5">Power BI</span><span data-at="5.6">DAX</span><span data-at="6.2">DirectQuery</span></div>
  </div>
- <div class="rg-brand-slot" data-at="2">
-  <div class="rg-badge-anchor">
-    <div class="rg-badge-glow"></div>
-    <div class="rg-badge-ring"></div>
-    <div class="rg-badge-box">
-      <div class="rg-laser"></div>
-      <div class="rg-badge-inner">
+ <div class="rg-brand-dock" data-at="2">
+  <div class="rg-dock-anchor">
+    <div class="rg-dock-glow"></div>
+    <div class="rg-dock-ring"></div>
+    <div class="rg-dock-box">
+      <div class="rg-dock-laser"></div>
+      <div class="rg-dock-inner">
+        <div class="rg-dock-grid"></div>
         <span>RG</span>
       </div>
     </div>
   </div>
-  <div class="rg-badge-meta">
-    <div class="rg-meta-tag">Executive Data Intelligence</div>
-    <div class="rg-meta-name">Ravinder Gupta<span style="color:#e40521">.</span></div>
-    <div class="rg-meta-chips">
+  <div class="rg-dock-meta">
+    <div class="rg-dock-tag">Executive Data Intelligence</div>
+    <div class="rg-dock-name">Ravinder Gupta<span style="color:#e40521">.</span></div>
+    <div class="rg-dock-chips">
       <span>Power BI DAX</span>
       <span>Relational SQL</span>
       <span>Python FastMCP</span>
@@ -385,6 +636,17 @@ const fmt=x=>Math.floor(x/60)+':'+String(Math.floor(x%60)).padStart(2,'0');
 let t=0,playing=false,last=0,cur=null;
 function seek(x){t=x;render()}
 function render(){const sc=SC.find(s=>t>=s.start&&t<s.start+s.d)||SC[SC.length-1],lt=t-sc.start;
+ // 2-Second Brand Splash Curtain (t from 0 to 2.0s)
+ const splashEl = document.getElementById('brand-splash');
+ if (splashEl) {
+   if (playing && t < 2.0) {
+     splashEl.classList.add('active');
+     const sBar = document.getElementById('splashTimeBar');
+     if (sBar) sBar.style.width = Math.min(100, (t / 2.0) * 100) + '%';
+   } else {
+     splashEl.classList.remove('active');
+   }
+ }
  if(cur!==sc){SC.forEach(s=>{s.el.classList.toggle('on',s===sc);s.cur=-1});cur=sc}
  sc.el.querySelectorAll('[data-at]').forEach(e=>e.classList.toggle('in',lt>=+e.dataset.at));
  step(sc,lt);
@@ -400,4 +662,55 @@ addEventListener('keydown',e=>{if(e.code==='Space'){e.preventDefault();playing?p
 function tick(now){if(playing){t+=(now-last)/1000;last=now;if(t>=TOT){t=TOT-.01;pause()}}render();requestAnimationFrame(tick)}
 function fit(){const p=document.getElementById('player'),s=Math.min(innerWidth/1280,innerHeight/784);p.style.transform=`translate(-50%,-50%) scale(${s})`}
 addEventListener('resize',fit);fit();requestAnimationFrame(tick);
+
+// Splash Particle Canvas Engine
+(function initSplashParticles() {
+  const sCanvas = document.getElementById('splashCanvas');
+  if (!sCanvas) return;
+  const sCtx = sCanvas.getContext('2d');
+  let sW = sCanvas.width = 1280;
+  let sH = sCanvas.height = 720;
+
+  const sParts = [];
+  for (let i = 0; i < 35; i++) {
+    sParts.push({
+      x: Math.random() * sW,
+      y: Math.random() * sH,
+      vx: (Math.random() - 0.5) * 0.7,
+      vy: (Math.random() - 0.5) * 0.7,
+      r: Math.random() * 2 + 1,
+      alpha: Math.random() * 0.5 + 0.2
+    });
+  }
+
+  function loopSplash() {
+    sCtx.clearRect(0, 0, sW, sH);
+    for (let i = 0; i < sParts.length; i++) {
+      for (let j = i + 1; j < sParts.length; j++) {
+        const dx = sParts[i].x - sParts[j].x;
+        const dy = sParts[i].y - sParts[j].y;
+        const d = Math.hypot(dx, dy);
+        if (d < 85) {
+          sCtx.beginPath();
+          sCtx.moveTo(sParts[i].x, sParts[i].y);
+          sCtx.lineTo(sParts[j].x, sParts[j].y);
+          sCtx.strokeStyle = 'rgba(239, 68, 68, ' + ((1 - d / 85) * 0.22) + ')';
+          sCtx.lineWidth = 1;
+          sCtx.stroke();
+        }
+      }
+    }
+    sParts.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > sW) p.vx *= -1;
+      if (p.y < 0 || p.y > sH) p.vy *= -1;
+      sCtx.beginPath();
+      sCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      sCtx.fillStyle = 'rgba(239, 68, 68, ' + p.alpha + ')';
+      sCtx.fill();
+    });
+    requestAnimationFrame(loopSplash);
+  }
+  requestAnimationFrame(loopSplash);
+})();
 </script></body></html>
