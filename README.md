@@ -9,6 +9,13 @@
 [![Cloud Cost](https://img.shields.io/badge/Cloud_Cost-%E2%82%B90.00_%2F_100%25_Free_Tier-2ea44f?style=for-the-badge)]()
 [![Interactive Walkthrough](https://img.shields.io/badge/Interactive_Walkthrough-Live_Cinema_Player-e40521?style=for-the-badge&logo=googlechrome&logoColor=white)](https://ravinder0710.github.io/honda-walkthrough.html)
 
+[![Executive Project Report](https://img.shields.io/badge/Project_Report-Official_PDF_Handover-emerald?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](./Honda_Sales_Analytics_Project_Report.pdf)
+[![Technical Handover MD](https://img.shields.io/badge/Documentation-Technical_Handover_MD-blue?style=for-the-badge&logo=markdown&logoColor=white)](./PROJECT_REPORT.md)
+
+> 📄 **Official Technical Handover & Complete Project Report:**
+> - 📥 **[Download Complete Executive Project Report (PDF)](./Honda_Sales_Analytics_Project_Report.pdf)**
+> - 📖 **[Read Full End-to-End Technical Documentation (Markdown)](./PROJECT_REPORT.md)**
+
 ---
 
 ## 📌 Executive Summary
